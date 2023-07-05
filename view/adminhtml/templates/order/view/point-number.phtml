@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var $block \Dev\Checkout\Block\Adminhtml\Order\View\PointNumber
+ */
+$order = $block->getOrder();
+?>
+<section class="admin__page-section donate">
+    <div class="admin__page-section-title">
+        <span class="title">Point Number</span>
+    </div>
+    <div class="admin__page-section-content">
+        <table class="admin__table-secondary donate" style="width: 31%">
+            <tr>
+                <th>Point Number :</th>
+                <th><?php echo $order['point_number'] != null ? $order['point_number'] : 0 ?></th>
+            </tr>
+        </table>
+    </div>
+</section>

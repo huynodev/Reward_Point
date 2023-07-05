@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Dev\Checkout\Api\Data\ShippingMethodExtensionInterface"
+                type="Dev\Checkout\Model\Cart\ShippingMethodExtension"/>
+    <type name="Magento\Quote\Model\Quote\Address\Rate">
+        <plugin name="dev_checkout_save_field_rate" type="Dev\Checkout\Plugin\Quote\Address\ImportShippingRatePlugin"
+                sortOrder="10" disabled="false"/>
+    </type>
+    <type name="Magento\Quote\Model\Cart\ShippingMethodConverter">
+        <plugin name="dev_checkout_get_field_shipping" type="Dev\Checkout\Plugin\Cart\ShippingMethodConverterPlugin"
+                sortOrder="10" disabled="false"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save_point_number_in_quote"
+                type="Dev\Checkout\Plugin\Checkout\Model\ShippingInformationManagementPlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Sales\Block\Order\Totals">
+        <plugin name="order_totals_add_point" type="Dev\Checkout\Plugin\Admin\Order\TotalsAddPoint" sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sales\Controller\Adminhtml\Order\Invoice\Save">
+        <plugin name="dev_checkout_invoice_save_plugin" type="Dev\Checkout\Plugin\Admin\Customer\SavePointNumberPlugin"
+                sortOrder="1" disabled="false"/>
+    </type>
+</config>
